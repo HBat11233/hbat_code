@@ -38,6 +38,12 @@
         "cstdlib": "cpp",
         "string_view": "cpp",
         "ostream": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "limits": "cpp",
+        "*.tcc": "cpp",
+        "system_error": "cpp",
+        "utility": "cpp"
     }
 }

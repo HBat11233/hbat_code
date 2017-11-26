@@ -19,7 +19,6 @@ int main()
     string str;
     getline(cin,str);
     cout << "Hello "<< str << '!' << endl;
-    
     system("pause");
     return 0;
 }
