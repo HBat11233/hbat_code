@@ -44,6 +44,7 @@
         "limits": "cpp",
         "*.tcc": "cpp",
         "system_error": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "iosfwd": "cpp"
     }
 }
