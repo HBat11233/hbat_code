@@ -10,7 +10,7 @@ int n;
 string str1, str2;
 int min1, min2;
 
-inline int cls(int min)//Çå³ıminÖ®ÉÏµÄ¶ÓÁĞ
+inline int cls(int min)//æ¸…é™¤minä¹‹ä¸Šçš„é˜Ÿåˆ—
 {
 	for (int i = y[min] + 1; i < que[x[min]].size(); ++i)
 	{
@@ -38,10 +38,10 @@ int main()
 		if (x[min1] == x[min2])continue;
 		if (str1 == "move")
 		{
-			cls(min1);//Çå³ımin1ÉÏµÄÊı×Ö
+			cls(min1);//æ¸…é™¤min1ä¸Šçš„æ•°å­—
 			que[x[min1]].erase(que[x[min1]].begin() + y[min1]);
 			if (str2 == "onto")
-				cls(min2);//Çå³ımin2µÄÊı×Ö
+				cls(min2);//æ¸…é™¤min2çš„æ•°å­—
 			que[x[min2]].push_back(min1);
 			x[min1] = x[min2];
 			y[min1] = que[x[min2]].size() - 1;
@@ -50,10 +50,10 @@ int main()
 		else
 		{
 			if (str2 == "onto")
-				cls(min2);//Çå³ımin2µÄÊı×Ö
-			que[x[min2]].insert(que[x[min2]].end(), que[x[min1]].begin() + y[min1], que[x[min1]].end());//²åÈëmin1ÁĞ
-			que[x[min1]].erase(que[x[min1]].begin() + y[min1], que[x[min1]].end());//Çå³ımin1ÁĞ
-			for (int i = y[min2] + 1; i<que[x[min2]].size(); ++i)//¸ñÊ½»¯min1
+				cls(min2);//æ¸…é™¤min2çš„æ•°å­—
+			que[x[min2]].insert(que[x[min2]].end(), que[x[min1]].begin() + y[min1], que[x[min1]].end());//æ’å…¥min1åˆ—
+			que[x[min1]].erase(que[x[min1]].begin() + y[min1], que[x[min1]].end());//æ¸…é™¤min1åˆ—
+			for (int i = y[min2] + 1; i<que[x[min2]].size(); ++i)//æ ¼å¼åŒ–min1
 			{
 				x[que[x[min2]][i]] = x[min2];
 				y[que[x[min2]][i]] = i;

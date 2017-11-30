@@ -5,7 +5,7 @@
 
 using namespace std;
 
-map <int, int> teamque;//×éÃû
+map <int, int> teamque;//ç»„å
 vector <int> guard;//
 vector <int> que;
 int n;

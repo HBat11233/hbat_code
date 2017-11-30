@@ -19,12 +19,12 @@ int main()
 	char ch;
 	string str1, str2;
 	string min;
-	for (cin >> ch; ch != '*'; cin >> ch)//ÊäÈëÃÜÂë
+	for (cin >> ch; ch != '*'; cin >> ch)//è¾“å…¥å¯†ç 
 	{
 		cin >> str2;
 		wordbook[ch] = str2;
 	}
-	for (cin >> str1,min=str1; str1 != "*"; cin >> str1)//ÊäÈë×Öµä
+	for (cin >> str1,min=str1; str1 != "*"; cin >> str1)//è¾“å…¥å­—å…¸
 	{
 		min = min < str1 ? min : str1;
 		str2.clear();
@@ -36,58 +36,58 @@ int main()
 			if (mybook[str2][i] > str1)break;
 		mybook[str2].insert(mybook[str2].begin() + i, str1);
 	}
-	sort(word.begin(), word.end(),_temp);//ÏÖÓĞ×ÖµäÂëÅÅĞò
-	for (cin >> str1; str1 != "*"; cin >> str1)//·­Òë
+	sort(word.begin(), word.end(),_temp);//ç°æœ‰å­—å…¸ç æ’åº
+	for (cin >> str1; str1 != "*"; cin >> str1)//ç¿»è¯‘
 	{
-		if (mybook.count(str1))//Èç¹ûÔÚ×ÖµäÖĞ
+		if (mybook.count(str1))//å¦‚æœåœ¨å­—å…¸ä¸­
 		{
-			if (mybook[str1].size() > 1)cout << mybook[str1][0] << '!' << endl;//Èç¹û¶à¸ö
+			if (mybook[str1].size() > 1)cout << mybook[str1][0] << '!' << endl;//å¦‚æœå¤šä¸ª
 			else cout << mybook[str1][0] << endl;
 		}
-		else//Èç¹ûÃ»ÓĞ
+		else//å¦‚æœæ²¡æœ‰
 		{
-			int i,j;//ºÍstr1Ò»Ñù³¤µÄÊÇ²»ĞèÒªµÄ£¬ÒòÎªÉÏÃæif¾Í¼ì²é¹ıÁË
-			for (i = 0; i < word.size(); ++i)//ÕÒµ½µÚÒ»¸ö±Èstr1³¤µÄ
+			int i,j;//å’Œstr1ä¸€æ ·é•¿çš„æ˜¯ä¸éœ€è¦çš„ï¼Œå› ä¸ºä¸Šé¢ifå°±æ£€æŸ¥è¿‡äº†
+			for (i = 0; i < word.size(); ++i)//æ‰¾åˆ°ç¬¬ä¸€ä¸ªæ¯”str1é•¿çš„
 				if (word[i].size() > str1.size())break;
-			for (j = i<word.size()? i:word.size()-1; j >= 0; j--)//ÕÒµ½µ¹ÊıµÚÒ»¸ö±Èstr1¶ÌµÄ
+			for (j = i<word.size()? i:word.size()-1; j >= 0; j--)//æ‰¾åˆ°å€’æ•°ç¬¬ä¸€ä¸ªæ¯”str1çŸ­çš„
 				if (word[j].size() < str1.size())break;
-			while (i<word.size()&&j>=0)//ÏŞ¶¨ÔÚ×ÖµäÄÚ
+			while (i<word.size()&&j>=0)//é™å®šåœ¨å­—å…¸å†…
 			{
-				if ((word[i].size() - str1.size()) == (str1.size() - word[j].size()))//Ôö¼õ³Ì¶ÈÒ»Ñù
+				if ((word[i].size() - str1.size()) == (str1.size() - word[j].size()))//å¢å‡ç¨‹åº¦ä¸€æ ·
 				{
 					int k,m;
-					for (k = 0; k < str1.size(); ++k)//¼ì²éÊÇ·ñÄ£ºı
+					for (k = 0; k < str1.size(); ++k)//æ£€æŸ¥æ˜¯å¦æ¨¡ç³Š
 						if (word[i][k] != str1[k])break;
-					for (m = 0; m < word[j].size(); ++m)//¼ì²éÊÇ·ñÄ£ºı
+					for (m = 0; m < word[j].size(); ++m)//æ£€æŸ¥æ˜¯å¦æ¨¡ç³Š
 						if (word[j][m] != str1[m])break;
-					if (k >= str1.size() && m >= word[j].size())//ÊÇ·ñÊä³ö
+					if (k >= str1.size() && m >= word[j].size())//æ˜¯å¦è¾“å‡º
 					{
-						if (mybook[word[i]][0] < mybook[word[j]][0])//Êä³ö×ÖµäĞòĞ¡
+						if (mybook[word[i]][0] < mybook[word[j]][0])//è¾“å‡ºå­—å…¸åºå°
 							cout << mybook[word[i]][0];
 						else
 							cout << mybook[word[j]][0];
 						cout << '?' << endl;
 						goto A1;
 					}
-					else if (k >= str1.size())//Ö»ÓĞÒ»¸öÄ£ºı
+					else if (k >= str1.size())//åªæœ‰ä¸€ä¸ªæ¨¡ç³Š
 					{
 						cout << mybook[word[i]][0] << '?' << endl;
 						goto A1;
 					}
-					else if (m >= word[j].size())//Ö»ÓĞÒ»¸öÄ£ºı
+					else if (m >= word[j].size())//åªæœ‰ä¸€ä¸ªæ¨¡ç³Š
 					{
 						cout << mybook[word[j]][0] << '?' << endl;
 						goto A1;
 					}
 					i++;
 					--j;
-					continue;//Ã»ÓĞÕÒµ½£¬½áÊø±¾´ÎÑ­»·
+					continue;//æ²¡æœ‰æ‰¾åˆ°ï¼Œç»“æŸæœ¬æ¬¡å¾ªç¯
 
 				}
-				if ((word[i].size() - str1.size()) < (str1.size() - word[j].size()))//ÔöĞ¡ÓÚ¼õ
+				if ((word[i].size() - str1.size()) < (str1.size() - word[j].size()))//å¢å°äºå‡
 				{
 					int k;
-					for (k = 0; k < str1.size(); ++k)//¼ì²éÊÇ·ñÄ£ºı
+					for (k = 0; k < str1.size(); ++k)//æ£€æŸ¥æ˜¯å¦æ¨¡ç³Š
 						if (word[i][k] != str1[k])break;
 					if (k >= str1.size())
 					{
@@ -95,12 +95,12 @@ int main()
 						goto A1;
 					}
 					++i;
-					continue;//Ã»ÓĞÕÒµ½£¬½áÊø±¾´ÎÑ­»·
+					continue;//æ²¡æœ‰æ‰¾åˆ°ï¼Œç»“æŸæœ¬æ¬¡å¾ªç¯
 				}
-				if ((word[i].size() - str1.size()) > (str1.size() - word[j].size()))//Ôö´óÓÚ¼õ
+				if ((word[i].size() - str1.size()) > (str1.size() - word[j].size()))//å¢å¤§äºå‡
 				{
 					int k;
-					for (k = 0; k < word[j].size(); ++k)//¼ì²éÊÇ·ñÄ£ºı
+					for (k = 0; k < word[j].size(); ++k)//æ£€æŸ¥æ˜¯å¦æ¨¡ç³Š
 						if (word[j][k] != str1[k])break;
 					if (k >= word[j].size())
 					{
@@ -108,13 +108,13 @@ int main()
 						goto A1;
 					}
 					--j;
-					continue;//Ã»ÓĞÕÒµ½£¬½áÊø±¾´ÎÑ­»·
+					continue;//æ²¡æœ‰æ‰¾åˆ°ï¼Œç»“æŸæœ¬æ¬¡å¾ªç¯
 				}
 			}
-			while (i<word.size())//Ã»ÓĞ¼õ
+			while (i<word.size())//æ²¡æœ‰å‡
 			{
 				int k;
-				for (k = 0; k < str1.size(); ++k)//¼ì²éÊÇ·ñÄ£ºı
+				for (k = 0; k < str1.size(); ++k)//æ£€æŸ¥æ˜¯å¦æ¨¡ç³Š
 					if (word[i][k] != str1[k])break;
 				if (k >= str1.size())
 				{
@@ -123,10 +123,10 @@ int main()
 				}
 				++i;
 			}
-			while (j >= 0)//Ã»ÓĞÔö
+			while (j >= 0)//æ²¡æœ‰å¢
 			{
 				int k;
-				for (k = 0; k < word[j].size(); ++k)//¼ì²éÊÇ·ñÄ£ºı
+				for (k = 0; k < word[j].size(); ++k)//æ£€æŸ¥æ˜¯å¦æ¨¡ç³Š
 					if (word[j][k] != str1[k])break;
 				if (k >= word[j].size())
 				{

@@ -50,7 +50,7 @@ int main()
 			{
 				for(int k=j+1;k<=m;++k)
 				{
-					int f=mak[st[i][j]];//ºÍÇ°¼¸ÐÐ¶ÔÓ¦ 
+					int f=mak[st[i][j]];//å’Œå‰å‡ è¡Œå¯¹åº” 
 					if( st[i][k]==st[f][k] )
 					{
 						cout << mak[ st[i][j] ] << ' ' << i << endl;
@@ -64,7 +64,7 @@ int main()
 			}
 		}
 	}
-	if(ijk)cout<<"yes";//Óë±ê×¼ÌâÒâ²»Í¬ 
+	if(ijk)cout<<"yes";//ä¸Žæ ‡å‡†é¢˜æ„ä¸åŒ 
 	else cout<<"no"; 
     return 0;
 }

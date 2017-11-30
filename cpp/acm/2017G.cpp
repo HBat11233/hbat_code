@@ -9,7 +9,7 @@ vector <int> ip;
 
 int qsort(int l,int r)
 {
-    int b=ip[(l+r)/2];//�Ƚ�ֵ���� 
+    int b=ip[(l+r)/2];//锟饺斤拷值锟斤拷锟斤拷 
     int i=l;
     int j=r;
     while(i<=j)
@@ -18,7 +18,7 @@ int qsort(int l,int r)
         while(ip[j]>b)j--;
         if(i<=j)
         {
-        	if(i!=j)//��ַ�ظ���Ϊ0 
+        	if(i!=j)//锟斤拷址锟截革拷锟斤拷为0 
         	{
             	ip[i]^=ip[j];
             	ip[j]^=ip[i];
