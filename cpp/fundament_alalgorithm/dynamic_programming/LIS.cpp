@@ -43,7 +43,6 @@ int lise::lis()
     vector <int> lleng(nums.size(),1);
     for(int i=1;i<nums.size();++i)
     {
-        int m=-1;
         int pos=-1;
         for(int j=0;j<i;++j)
         {
@@ -56,7 +55,7 @@ int lise::lis()
         }
 //            if(nums[j]<nums[i]&&nums[j]>=m)m=nums[j],pos=j;
         last[i]=pos;
-    )
+    }
     for(int i=1;i<nums.size();++i)
         if(last[i]==-1||!(last[i]<i))mleng[i]=mleng[i-1];
         else mleng[i]=mleng[i-1]>lleng[last[i]]+1? mleng[i-1]:lleng[last[i]]+1;
