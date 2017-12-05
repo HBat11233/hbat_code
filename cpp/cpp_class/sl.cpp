@@ -2,6 +2,7 @@
 #include <vector>
 #include <ctime>
 #include <cmath>
+#include <cstdlib> 
 #include <queue>
 
 using namespace std;
@@ -10,15 +11,15 @@ class sls
 {
 public:
     //sls(){sls(10,10);}
-    sls(int ma=10,int num=10);
-    int print();
-    int fsls(int x,int y);
+    sls(int ma=10,int num=10);                                                              //建立游戏
+    int print();                                                                            //输出
+    int fsls(int x,int y);                                                                  //挖雷
 private:
-    int n;//n*n的棋盘
-    int num;//雷数
-    vector < vector <bool> > lq;//0无雷，1有雷
-    vector < vector <int> > htl;//每一点的雷数
-    vector < vector <bool> > seel;//输出列表,0为未打开
+    int n;                                                                                  //n*n的棋盘
+    int num;                                                                                //雷数
+    vector < vector <bool> > lq;                                                            //0无雷，1有雷
+    vector < vector <int> > htl;                                                            //每一点的雷数
+    vector < vector <bool> > seel;                                                          //输出列表,0为未打开
 };
 
 int sls::fsls(int x,int y)
@@ -30,7 +31,7 @@ int sls::fsls(int x,int y)
                 seel[i][j]=1;
         return 1;
     }
-    else if(htl[x][y]==0)
+    else if(htl[x][y]==0)                                                                   //bfs排雷
     {
         seel[x][y]=1;
         queue <int>qx,qy;
@@ -63,7 +64,7 @@ int sls::fsls(int x,int y)
     return 0;
 }
 
-sls::sls(int ma,int nums)
+sls::sls(int ma,int nums)                                                                   //建立游戏
 {
     srand(time(NULL));
     n=ma;
@@ -76,7 +77,7 @@ sls::sls(int ma,int nums)
         htl.push_back(b);
         seel.push_back(a);
     }
-    for(int i=0;i<num;++i)
+    for(int i=0;i<num;++i)                                                                  //随机雷
     {
         int x;
         int y;
@@ -88,7 +89,7 @@ sls::sls(int ma,int nums)
         lq[x][y]=true;
         htl[x][y]=9;
     }
-    for(int i=0;i<n;++i)
+    for(int i=0;i<n;++i)                                                                    //每个点周围的雷数
     {
         for(int j=0;j<n;++j)
         {
@@ -107,6 +108,7 @@ sls::sls(int ma,int nums)
 
 int sls::print()
 {
+    int ans=0;                                                                              //剩余面积
     printf(" ");
     for(int i=0;i<n;++i)
         printf(" %d",i);
@@ -116,20 +118,37 @@ int sls::print()
         printf("%d ",i);
         for(int j=0;j<n;++j)
             if(seel[i][j])printf("%d ",htl[i][j]);
-            else printf("* ");
+            else 
+            {
+                ans++;
+                printf("* ");
+            }
         cout<<endl;
     }
-    return 0;
+    return ans;
 }
 
 int main()
 {
     A1:
-    sls ps;
+    int n,m;
+    cout<<"n*n! -> n=";
+    cin>>n;
+    cout<<"bomb number:";
+    cin>>m;
+    sls ps(n,m);
     while(1)
     {
-        ps.print();
+        if(ps.print()==m)
+        {
+            cout<<"Victory!\n";
+            system("pause");
+            cout<<' ';
+            system("cls");
+            goto A1;                                                                       //重新开始
+        }
         int x,y;
+        cout<<"Input:number1 number2\n:";
         cin>>x>>y;
         if(ps.fsls(x,y))
         {
@@ -138,7 +157,7 @@ int main()
             system("pause");
             cout<<" ";
             system("cls");
-            goto A1;
+            goto A1;                                                                        //重新开始
         }
         cout<<' ';
         system("cls");
