@@ -1,21 +1,31 @@
+from turtle import *
 import turtle
-import time
+import math
 
-
-turtle.pensize(5)
-turtle.pencolor("")
-turtle.fillcolor("red")
- 
-turtle.begin_fill()
-
-for _ in range(5):
-    turtle.forward(200)
-    turtle.right(144)
-turtle.end_fill()
-time.sleep(2)
-
-turtle.penup()
-turtle.goto(-150,-120)
-turtle.color("violet")
-turtle.write("Done", font=('Arial', 40, 'normal'))
-time.sleep(1)
+t=turtle.Turtle()
+def tuan():
+    r=200
+    t.penup()
+    dx=[1,1,-1,-1]
+    dy=[1,-1,-1,1]
+    t.penup()
+    t.goto(r,0)
+    t.pendown()
+    for z in range(4):
+        for i in range(r,-1,-1):
+            a=r**2-i**2#r=100
+            y=math.sqrt(a)
+            j=y
+            i=int(i*dx[z])
+            j=int(j*dy[z])
+            if(z%2):
+                temp=i
+                i=j
+                j=temp
+            t.goto(i,j)
+            print((i,j))
+t.speed(1)
+#tuan()
+t.circle(100,steps=5)
+s=Screen()
+s.exitonclick()

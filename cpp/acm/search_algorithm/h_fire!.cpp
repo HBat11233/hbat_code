@@ -43,7 +43,7 @@ inline int funhbat()
     }
     while(!quej.empty())
     {
-        int len=quef.size();
+        int len=quef.size();                                                    //火焰扩展，len记录一个时刻火焰数
         for(int i=0;i<len;++i)
         {
             ip a=quef.front();
@@ -58,10 +58,12 @@ inline int funhbat()
             }
             quef.pop();
         }
-        int i,lenj=quej.size();
+        int i,lenj=quej.size();                                                 //Jop逃跑
         for(i=0;i<lenj;++i)
         {
             ip a=quej.front();
+            if(a.x==1||a.x==r||a.y==1||a.y==c)
+                    return length[a.x][a.y];
             int j;
             for(j=0;j<4;++j)
             {
@@ -71,8 +73,6 @@ inline int funhbat()
                     length[b.x][b.y]=length[a.x][a.y]+1;
                     quej.push(b);
                     domap[b.x][b.y]='J';
-                    if(b.x==1||b.x==r||b.y==1||b.y==c)
-                        return length[b.x][b.y];
                 }
             }
             quej.pop();
@@ -89,6 +89,6 @@ int main()
     scanf("%d\n",&n);
     while(n--)
         if(int a=funhbat())cout<<a<<endl;
-        else cout<<"IMPOSSIBLE\n";
+        else cout<<"IMPOSSIBLE"<<endl;
     return 0;
 }
