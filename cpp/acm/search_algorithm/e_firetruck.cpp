@@ -1,77 +1,75 @@
 #include <iostream>
-#include <vector>
-#include <string>
+#include <cstdio>
 #include <cstring>
+#include <vector>
 #include <algorithm>
 
 using namespace std;
-
+vector <int> road[22];
+int ankr[22];
+int ank[22];
 vector < vector <int> > ans;
 vector <int> temp;
-vector <int> map[22];
-int ko[22];
 int k=0;
 
-int dfs(int n,int &e)
+int dfsr(int x)
 {
-    if(n==e)
+    ankr[x]=true;
+    for(int i=0;i<road[x].size();++i)
     {
-        ans.push_back(temp);
-        ans[ans.size()-1].push_back(n);
-        return 0;
-    }
-    else
-    {
-        if(map[n].size()==0)
-        {
-            ko[n]++;
-            return 1;
-        }
-        for(int i=0;i<map[n].size();++i)
-        {
-            if(!ko[map[n][i]])
-            {
-                ko[map[n][i]]++;
-                temp.push_back(n);
-                if(dfs(map[n][i],e)==1)
-                {
-                    ko[map[n][i]]--;
-                    map[n].erase(map[n].begin()+i);
-                    i--;
-                }
-                else ko[map[n][i]]--;
-                temp.pop_back();
-            }
-        }
+        if(ankr[road[x][i]])continue;
+        dfsr(road[x][i]);
     }
     return 0;
 }
 
-inline int func(int &n)
+int dfs(int x,int &n)
 {
+    if(x==n)ans.push_back(temp);
+    else for(int i=0;i<road[x].size();++i)
+    {
+        if(!ankr[road[x][i]]||ank[road[x][i]])continue;
+        ank[road[x][i]]=true;
+        temp.push_back(road[x][i]);
+        dfs(road[x][i],n);
+        temp.pop_back();
+        ank[road[x][i]]=false;
+    }
+    return 0;
+}
 
-    k++;
-    int i=22,j;
+int func(int &n)
+{
+    memset(ankr,0,sizeof(ankr));
+    memset(ank,0,sizeof(ank));
+    for(int i=0;i<22;++i)
+        road[i].clear();
     ans.clear();
-    memset(ko,0,sizeof(ko));
-    while(i--)map[i].clear();
     temp.clear();
+    int i,j;
+    k++;
     while(scanf("%d%d",&i,&j),i)
     {
-        map[i].push_back(j);
-        map[j].push_back(i);
+        road[i].push_back(j);
+        road[j].push_back(i);
     }
-    ko[1]++;
+    dfsr(n);
+    ank[1]=true;
+    temp.push_back(1);
     dfs(1,n);
     sort(ans.begin(),ans.end());
     cout<<"CASE "<<k<<":\n";
     for(i=0;i<ans.size();++i)
     {
+        int s=ans[i].size()-1;
         for(j=0;j<ans[i].size();++j)
-            cout<<' '<<ans[i][j];
-        cout<<endl;
+        {
+            cout<<ans[i][j];
+            if(j==s)cout<<endl;
+            else cout<<' ';
+        }
     }
-    printf("There are %d routes from the firestation to streetcorner %d.",ans.size(),n);
+    printf("There are %d routes from the firestation to streetcorner %d.\n",ans.size(),n);
     
     return 0;
 }
@@ -83,3 +81,29 @@ int main()
         func(n);
     return 0;
 }
+/*
+6
+1 2
+1 3
+3 4
+3 5
+4 6
+5 6
+2 3
+2 4
+0 0
+4
+2 3
+3 4
+5 1
+1 6
+7 8
+8 9
+2 5
+5 7
+3 1
+1 8
+4 6
+6 9
+0 0
+*/
