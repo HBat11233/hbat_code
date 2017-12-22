@@ -1,6 +1,11 @@
-from tkinter import *
-def hello():
-    print("hello world!")
-tk=Tk()
-btn = Button(tk,text="click me",command=hello)
-btn.pack()
+from turtle import *
+from datetime import *
+t=Turtle()
+tracer(False)
+t.up()
+t.goto(0,50)
+t.down()
+t.circle(100)
+tracer(True)
+s=Screen()
+s.exitonclick()
