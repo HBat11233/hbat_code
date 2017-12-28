@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+('q', 18)
+('uuy', 5)
+('rew', 2)
+('tt', 2)
+('ae', 2)
+('fQwef', 1)
+('qwer', 1)
+('ewrqrrewrr', 1)
+('rw', 1)
+('ttqwe', 1)
+('ast', 1)
+('tq', 1)
+('asfa', 1)
+('aewrewa', 1)
+('twqdsgrd', 1)
+('asfws', 1)
+('sfash', 1)
+('hj', 1)
+('yyu', 1)
+=======
 word number is 23
 ans:                fQwef have   1
 ans:                 qwer have   1
@@ -18,3 +39,4 @@ ans:                sfash have   1
 ans:                   hj have   1
 ans:                  uuy have   3
 ans:                  yyu have   1
+>>>>>>> 217c45a8177ebc60481e7117db32fd750129ff0c
