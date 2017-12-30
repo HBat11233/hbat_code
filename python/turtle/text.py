@@ -1,17 +1,101 @@
-import os
-import re
-with open('input.txt','r') as f:
-#with open('input.txt','w')
-    all_num={}
-    for i in f.readlines():
-        listline=re.findall(r'[A-Za-z]+',i)
-        print(listline)
-        for word in listline:
-            word_count=len(re.findall(word,i))
-            all_num[word]=all_num.get(word,0)+ word_count
-all_words=sorted(all_num.items(),key=lambda d: d[1], reverse=True)
-for each in all_words:  
-    print(each)
-with open('output.txt', 'w') as fp:
-    for each in all_words:  
-        fp.writelines(str(each)+"\n")
+from turtle import *
+from time import *
+
+def watch():
+    wc=Turtle()
+    wc.hideturtle()
+    tracer(False)
+    wc.up()
+    wc.goto(0,-150)
+    wc.down()
+    #wc.circle(150)
+    wc.up()
+    wc.goto(0,0)
+    wc.down()
+    for i in range(0,361):
+        wc.up()
+        wc.forward(150)
+        wc.down()
+        if(i%90==0):
+            wc.width(5)
+            wc.forward(30)
+        elif(i%45==0):
+            wc.width(2.5)
+            wc.forward(20)
+        elif(i%5==0):
+            wc.width(1.5)
+            wc.forward(10)
+        wc.left(1)
+        wc.up()
+        wc.goto(0,0)
+        wc.down()
+        wc.width(1)
+    tracer(True)
+
+def hi(a):
+    a.reset()
+    t=asctime()
+    t=t.split()
+    t=t[3].split(':')
+    htime=((int(t[0])*3600+int(t[1])*60+int(t[2]))/(3600*12))*360
+    tracer(False)
+    a.left(90)
+    a.right(htime)
+    a.up()
+    a.forward(120)
+    a.down()
+    a.width(7)
+    a.forward(20)
+    tracer(True)
+
+def mi(a):
+    a.reset()
+    t=asctime()
+    t=t.split()
+    t=t[3].split(':')
+    htime=((int(t[0])*3600+int(t[1])*60+int(t[2]))/(3600))*360
+    tracer(False)
+    a.left(90)
+    a.right(htime)
+    a.up()
+    a.forward(100)
+    a.down()
+    a.width(5)
+    a.forward(40)
+    tracer(True)
+
+def si(a):
+    a.reset()
+    t=asctime()
+    t=t.split()
+    t=t[3].split(':')
+    htime=((int(t[0])*3600+int(t[1])*60+int(t[2]))/(60))*360
+    tracer(False)
+    a.left(90)
+    a.right(htime)
+    a.up()
+    a.forward(80)
+    a.down()
+    a.width(4)
+    a.forward(60)
+    tracer(True)
+
+def sleeps(lenth):
+    time1=clock()
+    time2=clock()
+    while(time2-time1<lenth):
+        time2=clock()
+watch()
+ha=Turtle()
+ma=Turtle()
+sa=Turtle()
+while True:
+    ha.hideturtle()
+    ma.hideturtle()
+    sa.hideturtle()
+    sleeps(1)
+    hi(ha)
+    mi(ma)
+    si(sa)
+s=Screen()
+s.exitonclick()
