@@ -4,7 +4,7 @@ using namespace std;
 
 typedef long long int LONG;
 
-bool sushu(LONG num)//ÅĞ¶ÏÊÇ²»ÊÇËØÊı 
+bool sushu(LONG num)//åˆ¤æ–­æ˜¯ä¸æ˜¯ç´ æ•° 
 {
     LONG i;
     for(i=2;i*i<num;++i)
@@ -18,30 +18,30 @@ int main()
     LONG num;
     LONG temp=0;
     LONG fznum=0;
-    LONG sum=0;//¼ÆËãÎ»ÊıºÍ
-    int length=0;//num³¤¶È 
-    cout<<"ÇëÊäÈëÊı×Ö£º";
+    LONG sum=0;//è®¡ç®—ä½æ•°å’Œ
+    int length=0;//numé•¿åº¦ 
+    cout<<"è¯·è¾“å…¥æ•°å­—ï¼š";
     cin>>num;
-    cout<<"Êı×ÖÎ»Êı£º";
-    temp=num;//ÔİÊ±´æÒ»ÏÂ 
+    cout<<"æ•°å­—ä½æ•°ï¼š";
+    temp=num;//æš‚æ—¶å­˜ä¸€ä¸‹ 
     while(temp>0)
     {
     	length++; 
     	fznum*=10;
-    	fznum+=temp%10;//·´ĞòÊı 
-    	sum+=temp%10;//Î»ÊıÇóºÍ 
+    	fznum+=temp%10;//ååºæ•° 
+    	sum+=temp%10;//ä½æ•°æ±‚å’Œ 
     	temp/=10;
 	}
 	cout<<length<<endl;
-    cout<<"¸÷¸öÎ»ÊıÖ®ºÍ£º"<<sum<<endl<<"·Ö¸îÊı×Ö£º";
+    cout<<"å„ä¸ªä½æ•°ä¹‹å’Œï¼š"<<sum<<endl<<"åˆ†å‰²æ•°å­—ï¼š";
     while(fznum>0)
     {
     	cout<<fznum%10<<' ';
     	fznum/=10;
 	}
     cout<<endl;
-    if(sushu(num))cout<<num<<"ÊÇËØÊı£¡"<<endl;//ÅĞ¶ÏÊÇ²»ÊÇËØÊı 
-    else cout<<num<<"²»ÊÇËØÊı£¡"<<endl;
+    if(sushu(num))cout<<num<<"æ˜¯ç´ æ•°ï¼"<<endl;//åˆ¤æ–­æ˜¯ä¸æ˜¯ç´ æ•° 
+    else cout<<num<<"ä¸æ˜¯ç´ æ•°ï¼"<<endl;
     system("pause");
     return 0;
 }

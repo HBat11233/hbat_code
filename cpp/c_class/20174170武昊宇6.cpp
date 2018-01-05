@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdio>
+#include <cstdlib>
 #include <cstring>
 
 using namespace std;
@@ -19,9 +21,10 @@ int main()
             temp.replace(temp.find(str),str.size(),"");
         ans.push_back(temp);
     }
-    freopen("text.txt","w",stdout);
-    for(string i:ans)cout<<i<<endl;
-    cout<<"Successful!\n";
-    system("pause");
+    fclose(stdin);
+    freopen("a.txt","w",stdout);
+    for(int i=0;i<ans.size();++i)cout<<ans[i]<<endl;
+    fclose(stdout);
+    getchar();
     return 0;
 }
