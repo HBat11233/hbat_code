@@ -1,7 +1,8 @@
 from tkinter import *
 class sierpinski_triangle:
-    def _init_(self):
+    def __init__(self):
         self.window=Tk()
+        self.window.title('Sierpinski triangle')
         self.width=800
         self.height=600
         self.canvas=Canvas(self.window,width=self.width,height=self.height)
@@ -49,7 +50,6 @@ class sierpinski_triangle:
 
 def _main():
     a=sierpinski_triangle()
-    a._init_()
     a._mainloop()
 
 _main()
