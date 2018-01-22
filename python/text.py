@@ -1,17 +1,28 @@
-import os
-import re
-with open('input.txt','r') as f:
-#with open('input.txt','w')
-    all_num={}
-    for i in f.readlines():#f.readlines()读入全部数据，返回列表，列表中的每一个元素是一行字符串   ；  ； ；  如果用f.readline()，是读入一行字符串，所以列表中的美一个元素是字母
-        listline=re.findall(r'[A-Za-z]+',i)#'[A-Za-z]'//匹配字母
-        print(listline)
-        for word in listline:
-            word_count=len(re.findall(word,i))
-            all_num[word]=all_num.get(word,0)+ word_count
-all_words=sorted(all_num.items(),key=lambda d: d[1], reverse=True)
-for each in all_words:  
-    print(each)
-with open('output.txt', 'w') as fp:
-    for each in all_words:  
-        fp.writelines(str(each)+"\n")
+import urllib
+from urllib.request import *
+#打开网站
+request=Request("http://www.baidu.com")
+response=urlopen(request)#urlopen(url,data,headers) ,response = urlopen("http://www.baidu.com")
+#print(response.read())
+#print()
+values = {"username":"eedsyz467","password":"888666wh"}
+data = urllib.parse.urlencode(values)#.encode(encoding='UTF8')
+url = "https://mail.126.com/"
+geturl = url + "?" + data
+#这是get打开，
+#post是r
+#data = urllib.parse.urlencode(values).encode(encoding="UTF8")
+#reuest= Request(url,data)
+request = Request(geturl)
+response = urlopen(request) 
+#print (response.read())
+
+url = 'https://weibo.com/'
+user_agent = 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:57.0) Gecko/20100101 Firefox/57.0'
+values = {'username':'15134948750','password':'1123376988w'}
+headers = {"User-Agent":user_agent}
+data = urllib.parse.urlencode(values).encode(encoding='UTF8')
+request = Request(url,data,headers)
+response = urlopen(request)
+page = response.read()
+print(page)

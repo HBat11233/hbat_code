@@ -1,51 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define N 5
+#define N 1000
 
-typedef struct student
-	{
-		char no[13];
-		char name[20];
-		int age;
-	}STU;
+char str[N], buf[N];
+int vis[N], total, len;
 
-int main()
-	{
-		int inputin(struct student x[]);
-		int count(STU *p);
-		int people_num;
-		STU stu[N];
-		inputin(stu);
-		people_num=count(stu);
-		printf("输入的个人信息中，年龄在20岁以上的有%d人",people_num);
-		return 0; 
-	}
-	
-int count(STU *p)
-	{
-		int conter=0,i;
-		for(i=0;i<N;i++)
-			{
-				if(p[i].age>20)
-					{
-						conter++;
-					}
-			}
-		return conter;
-	}
-	
-int inputin(struct student x[])
-	{
-		int i,ages=0;
-		for(i=0;i<N;i++)
-			{
-				printf("请输入该学生的姓名:"); 
-				gets(x[i].name);
-				printf("请输入该学生的年龄:");
-				scanf("%d",&ages);
-				x[i].age=ages;
-			}
-            return 0;
-	}
-	
+void arrange(int num) {
+    int i;
+    if (num == len) {
+        printf("%s\n", buf);
+        total++;
+        return;
+    }
+	for (i = 0; i < len; ++i) {
+        if (!vis[i]) {
+                vis[i] = 1;
+                buf[num] = str[i];
+                arrange(num + 1);
+                vis[i] = 0;
+            
+        }
+    }
+}
+int main() {
+    while (~scanf("%s", str)) {
+        len = strlen(str);
+        int i, j;
+        for (i = 0; i < len; ++i) {
+            for (j = i + 1; j < len; ++j) {
+                if (str[i] > str[j]) {
+                    char tmp = str[i];
+                    str[i] = str[j];
+                    str[j] = tmp;
+                }
+            }
+        }
+        total = 0;
+        buf[len] = '\0';
+        arrange(0);
+        printf("Total %d\n", total);
+    }
+    return 0;
+}
