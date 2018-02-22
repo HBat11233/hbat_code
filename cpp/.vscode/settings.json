@@ -45,6 +45,7 @@
         "*.tcc": "cpp",
         "system_error": "cpp",
         "utility": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "vector": "cpp"
     }
 }

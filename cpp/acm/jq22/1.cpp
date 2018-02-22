@@ -1,3 +1,4 @@
+//hdu1312
 #include <iostream>
 #include <cstdio>
 #include <cstring>
