@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "屏保", "屏保\屏保.csproj", "{80FC6B2C-33E8-41DD-9F9F-1E8347915490}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80FC6B2C-33E8-41DD-9F9F-1E8347915490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80FC6B2C-33E8-41DD-9F9F-1E8347915490}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80FC6B2C-33E8-41DD-9F9F-1E8347915490}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80FC6B2C-33E8-41DD-9F9F-1E8347915490}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1C21F17-FC7E-4E6C-A415-D156033D9100}
+	EndGlobalSection
+EndGlobal
