@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+struct LS
+{
+	int a;
+	int b;
+	int c;
+	LS(int a=0,int b=0,int c=0)
+	:a(a),b(b),c(c){}
+};
+
+int main()
+{
+	int a;
+	try
+	{
+		cin>>a;
+		cout<<a;
+	}catch(...)
+	{
+		cout<<"error"<<endl;
+	}
+	return 0;
+}

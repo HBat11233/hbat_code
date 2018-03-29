@@ -1,0 +1,41 @@
+/*
+ * test.cpp
+ *
+ *  Created on: 2018Äê3ÔÂ21ÈÕ
+ *      Author: w1123
+ */
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int n,m;
+char ch;
+vector<int>cl;
+
+int main()
+{
+	scanf("%d%d",&n,&m);
+	cl.resize(n+1);
+	for(int i=1;i<=n;++i)
+		cl[i]=100;
+	for(int i=0;i<m;++i)
+	{
+		cin>>ch;
+		int a,b,c;
+		if(ch=='L')
+		{
+			scanf("%d%d%d",&a,&b,&c);
+			for(int i=a;i<=b;++i)
+				cl[i]+=c;
+		}else
+		{
+			int tempnum;
+			scanf("%d",&tempnum);
+			cout<<cl[tempnum]<<endl;
+		}
+	}
+	return 0;
+}
+

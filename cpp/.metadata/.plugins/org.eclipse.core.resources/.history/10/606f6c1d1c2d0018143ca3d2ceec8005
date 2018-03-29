@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int n,m;
+int MMS[100001][3];
+int AAS[100001][2];
+int Mlength=0;
+int Alength=0;
+int cl[100001];
+int bt[100001];
+
+int main()
+{
+	scanf("%d%d\n",&n,&m);
+	for(int i=0;i<m;++i)
+	{
+		char ch;
+		scanf("%c",&ch);
+		if(ch=='L')
+		{
+			scanf("%d%d%d\n",&MMS[Mlength][0],&MMS[Mlength][1],&MMS[Mlength][2]);
+			Mlength++;
+		}else
+		{
+			scanf("%d\n",&AAS[Alength][0]);
+			AAS[Alength][1]=Mlength;
+			Alength++;
+		}
+	}
+	for(int i=0;i<Alength;++i)
+	{
+		for(int j=cl[AAS[i][0]]?bt[AAS[i][0]]:0;j<AAS[i][1];++j)
+			if(MMS[j][0]<=AAS[i][0]&&MMS[j][1]>=AAS[i][0])
+				cl[AAS[i][0]]+=MMS[j][2];
+		bt[AAS[i][0]]=AAS[i][1];
+		printf("%d\n",cl[AAS[i][0]]+100);
+	}
+	return 0;
+}

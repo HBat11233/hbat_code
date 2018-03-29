@@ -12,14 +12,18 @@
 using namespace std;
 int n,m;
 struct seg{int l,r,v;}t[3000005];
-void build(int k,int l,int r)
+
+
+void build(int k,int l,int r)                       //建树 k：当前节点下标    线段左为l，线段右为r
 {
-    t[k].l=l;t[k].r=r;
-    if(l==r)return;
-    int mid=(l+r)>>1;
-    build(k<<1,l,mid);
-    build(k<<1|1,mid+1,r);
+    t[k].l=l;t[k].r=r;                              //线段左端，线段右端
+    if(l==r)return;                                 //线段长度为零，结束
+    int mid=(l+r)>>1;                               //取线段中点
+    build(k<<1,l,mid);                              //k<<1:下标为k节点的左儿子下标，线段左为l，线段右为mid                      k<<1==k*2
+    build(k<<1|1,mid+1,r);                          //k<<1|1:下标为k节点的右儿子下标，线段左为mid+1，线段右为r                  k<<1|1==k*2+1
 }
+
+
 int mn(int k)
 {
     if(!t[k].v)return -1;

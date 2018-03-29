@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <vector>
+
+using namespace std;
+
+struct LS
+{
+	int a;
+	int b;
+	int c;
+	LS(int a=0,int b=0,int c=0):
+		a(a),b(b),c(c){}
+};
+
+struct BS
+{
+	int s;//²éÑ¯
+	int t;//Â¥²ã
+	BS(int s=0,int t=0):
+		s(s),t(t){}
+};
+int n,m;
+vector<LS>MMS;
+vector<BS>AAS;
+int cl[100001];
+int bt[100001];
+
+void inmms(int a,int b,int c)
+{
+	if(c==0)return;
+	int len=MMS.size();
+	int ic=0;
+	while(MMS[ic].b<a)ic++;
+	int tempb=MMS[ic].b;
+	MMS[ic].b=a-1;
+	MMS.insert(MMS.begin()+ic+1,LS(a,tempb,MMS[ic].c+c));
+	if(tempb+1>=b)return;
+	inmms(tempb+1,b,c);
+	return;
+}
+
+int main()
+{
+	scanf("%d%d\n",&n,&m);
+	MMS.push_back(LS(1,n,0));
+	for(int i=0;i<m;++i)
+	{
+		char ch;
+		scanf("%c",&ch);
+		if(ch=='L')
+		{
+			int a,b,c;
+			scanf("%d%d%d\n",&a,&b,&c);
+			inmms(a,b,c);
+		}else
+		{
+			int tenum;
+			scanf("%d\n",&tenum);
+			AAS.push_back(BS(tenum,MMS.size()));
+		}
+	}
+	for(int i=0;i<AAS.size();++i)
+	{
+		for(int j=0;j<MMS.size();++j)
+			if(MMS[j].a<=AAS[i].s&&MMS[j].b>=AAS[i].s)
+			{
+				printf("%d\n",MMS[j].c);
+				break;
+			}
+	}
+	return 0;
+}
