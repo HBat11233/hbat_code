@@ -1,0 +1,18 @@
+/*
+ * text.cpp
+ *
+ *  Created on: 2018Äê4ÔÂ2ÈÕ
+ *      Author: w1123
+ */
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int &a;
+	return 0;
+}
+
+

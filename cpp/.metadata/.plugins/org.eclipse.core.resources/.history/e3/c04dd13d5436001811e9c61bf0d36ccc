@@ -1,0 +1,21 @@
+/*
+ * text.cpp
+ *
+ *  Created on: 2018Äê4ÔÂ2ÈÕ
+ *      Author: w1123
+ */
+
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	int num=0;
+	int &a(num);
+	cout<<a<<' '<<num;
+	return 0;
+}
+
+
