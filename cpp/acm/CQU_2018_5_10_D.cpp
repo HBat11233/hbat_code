@@ -1,9 +1,6 @@
 #include <cstdio>
 #include <iostream>
 
-
-#pragma (disable :4996)
-
 using namespace std;
 
 struct SQ
