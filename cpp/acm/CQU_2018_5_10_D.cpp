@@ -18,6 +18,7 @@ typedef long double LDBL;
 #define CLR(a) MST(a,0)
 #define Sqr(a) (a*a)
 
+<<<<<<< HEAD
 const int UP=0,RIGHT=1,DOWN=2,LEFT=3;
 const int TIME=1e5;
 struct node{int n[4];};
@@ -60,6 +61,9 @@ int main()
     }
     return 0;
 }
+=======
+using namespace std;
+>>>>>>> 47639abb13dad5d66c6be4f09a8942d6896246a8
 
 int dfs(int step)
 {

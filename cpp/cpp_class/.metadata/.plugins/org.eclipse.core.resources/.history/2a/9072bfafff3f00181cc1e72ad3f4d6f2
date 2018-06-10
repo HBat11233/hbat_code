@@ -1,0 +1,35 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 2018骞�4鏈�10鏃�
+ *      Author: hbat
+ */
+
+#include <iostream>
+#include "HugeInteger.h"
+
+using namespace std;
+
+int main()
+{
+	HugeInteger a,b;
+	a.input();
+	b.input();
+	a.output();
+	cout<<endl;
+	b.output();
+	cout<<endl;
+	a.multiply(b);
+	a.output();
+	cout<<endl;
+	a.modulus(b);
+	a.output();
+	cout<<endl;
+	b.output();
+	b.multiply("10000000000000000000000000000000000000000000000000000000000000000000");
+	cout<<endl;
+	b.output();
+	return 0;
+}
+
+
