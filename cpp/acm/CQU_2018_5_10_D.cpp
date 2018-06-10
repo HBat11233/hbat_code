@@ -1,23 +1,7 @@
-#pragma comment(linker, "/STACK:102400000,102400000")
 #include <cstdio>
 #include <iostream>
-#include <cstdlib>
-#include <cstring>
-#include <algorithm>
-#include <cmath>
-#include <map>
-#include <set>
-#include <queue>
-using namespace std;
-typedef pair<int,int> Pii;
-typedef long long LL;
-typedef unsigned long long ULL;
-typedef double DBL;
-typedef long double LDBL;
-#define MST(a,b) memset(a,b,sizeof(a))
-#define CLR(a) MST(a,0)
-#define Sqr(a) (a*a)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 const int UP=0,RIGHT=1,DOWN=2,LEFT=3;
 const int TIME=1e5;
@@ -28,12 +12,12 @@ int Cnt[20][20];
 int Map[20][20];
 bool vis[30];
 int ntime=0;
+=======
+>>>>>>> parent of 0a0a1d3... 6
 
-int dfs(int);
-void GetCor(int,int&,int&);
-void change(int,int);
-bool check(int);
+#pragma (disable :4996)
 
+<<<<<<< HEAD
 int main()
 {
     #ifdef LOCAL
@@ -64,44 +48,33 @@ int main()
 =======
 using namespace std;
 >>>>>>> 47639abb13dad5d66c6be4f09a8942d6896246a8
+=======
+using namespace std;
+>>>>>>> parent of 0a0a1d3... 6
 
-int dfs(int step)
+struct SQ
 {
-    if(++ntime>TIME) return 1;
+    int fnum[4]; 
+};
 
-    if(step==N*N) return 1;
+SQ mps[6][6];
+int dx[4]={0,1,0,-1};
+int dy[4]={1,0,-1,0};
+int t;
+int n;
 
-    for(int i=0; i<N*N; i++)
+int main()
+{
+    scanf("%d",&t);
+    while(t--)
     {
-        if(vis[i]) continue;
-        int x,y;
-        GetCor(step,x,y);
-        if( x && inpt[i].n[UP] != inpt[ Map[x-1][y] ].n[DOWN] ) continue;
-        if(x&1)
-        {
-            if( y+1<N && inpt[i].n[RIGHT] != inpt[ Map[x][y+1] ].n[LEFT]) continue;
-            vis[i]=1;
-            Map[x][y]=i;
-            if(dfs(step+1)) return 1;
-            Map[x][y]=0;
-            vis[i]=0;
-        }
-        else
-        {
-            if(y && inpt[i].n[LEFT] != inpt[ Map[x][y-1] ].n[RIGHT]) continue;
-            vis[i]=1;
-            Map[x][y]=i;
-            if(dfs(step+1)) return 1;
-            Map[x][y]=0;
-            vis[i]=0;
-        }
+        scanf("%d",&n);
+        int temp=n*n;
+        for(int i=1;i<=n;++i)
+            for(int j=1;j<=n;++j)
+                for(int z=0;z<4;++z)
+                    scanf("%d",mps[i][j].fnum+z);
+        
     }
     return 0;
-}
-
-void GetCor(int step, int &x, int &y)
-{
-    x=step/N;
-    if(x&1) y=N-1-step%N;
-    else y=step%N;
 }
