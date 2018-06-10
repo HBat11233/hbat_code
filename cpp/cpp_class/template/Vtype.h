@@ -5,13 +5,14 @@
 
 //template<typename TYPE>
 
-typedef int TYPE;
+//typedef int TYPE;
 
-class Vtype_iterator
+
+template<class TYPE> class Vtype_iterator
 {
 public:
     Vtype_iterator(){}
-    Vtype_iterator(std::vector<TYPE>::iterator it):it(it){}
+    Vtype_iterator(typename::std::vector<TYPE>::iterator it):it(it){}
     TYPE &operator *()
     {
         return *it;
@@ -35,17 +36,17 @@ public:
     {
         return it==b.it;
     }
-    std::vector<TYPE>::iterator getit()
+    typename::std::vector<TYPE>::iterator getit()
     {
         return it;
     }
 private:
-    std::vector<TYPE>::iterator it;
+    typename::std::vector<TYPE>::iterator it;
 };
 
-class Vtype
+template<class TYPE> class Vtype
 {
-    typedef Vtype_iterator iterator;
+    typedef Vtype_iterator<TYPE> iterator;
 public:
     Vtype(int len):arr(len){}
     Vtype(int len,TYPE n):arr(len,n){}
@@ -58,7 +59,7 @@ public:
         return iterator(arr.end());
     }
 private:
-    std::vector<TYPE>arr;
+    typename::std::vector<TYPE>arr;
 };
 
 #endif
