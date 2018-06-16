@@ -1,72 +1,46 @@
 #include <bits/stdc++.h>
-using namespace std;
-const int MAXN = 1000 + 5;
 
-int T, N, M;
-int deg[MAXN];
-int par[MAXN];
-int in[MAXN], out[MAXN];
-int Find (int x) {
-    return par[x] == -1 ? x : par[x] = Find (par[x]);
-}
-void Union (int a, int b) {
-    int pa = Find (a), pb = Find (b);
-    if (pa != pb) par[pb] = pa;
-}
-void init() {
-    memset (deg, 0, sizeof (deg) );
-    memset (in, 0, sizeof (in) );
-    memset (out, 0, sizeof (out) );
-    memset (par, -1, sizeof (par) );
-}
-bool connected() {
-    int cnt = 0;
-    for (int i = 1; i <= N; i++) {
-        if (par[i] == -1) cnt ++;
-    }
-    return cnt <= 1;
-}
-bool dir() {
-    int num;
-    num = 0;
-    for (int i = 1; i <= N; i++) {
-        if (deg[i] & 1) num ++;
-    }
-    return (num == 0 || num == 2);
-}
-bool undir() {
-    int num, s, t;
-    num = 0;
-    s = t = -1;
-    for (int i = 1; i <= N; i++) {
-        if(out[i] > in[i]) s = i, num ++;
-        else if(in[i] > out[i]) t = i, num ++;
-    }
-    if((num == 0 || (num == 2 && ~s && ~t && (out[s] - in[s]) == 1) && (out[t] - in[t]== -1))) return true;
-    return false;
-}
-int main() {
-///    freopen ("input.txt", "r", stdin);
-    int u, v;
-    scanf("%d", &T);
-    while (T --) {
-        init();
-        scanf ("%d %d", &N, &M);
-        for (int i = 1; i <= M; i++) {
-            scanf ("%d %d", &u, &v);
-            deg[u] ++, deg[v] ++;
-            Union (u, v);
-            out[u] ++, in[v] ++;
+using namespace std;
+
+int p;
+
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        int n,m,k;
+        vector< vector <int> >c;
+        scanf("%d%d%d%d",&n,&m,&k,&p);
+        int temp=max(n,m);
+        int temps=temp*k+5;
+        c.resize(temps);
+        for(int i=0;i<c.size();++i)
+            c[i].resize(i+1);
+        for(int i=0;i<temps;++i)
+            c[i][0]=c[i][i]=1;
+        for(int i=1;i<temps;++i)
+            for(int j=1;j<i;++j)
+                c[i][j]=(c[i-1][j-1]%p+c[i][j-1]%p)%p;
+        int ans=0;
+        temp=k/2;
+        while(temp)
+        {
+            if(temp<=m&&(k-(temp<<1))<=n)
+            {
+                ans+=(c[m][temp]*c[n][k-(temp<<1)])%p;
+                ans%=p;
+            }
+            temp--;
         }
-        bool con, res1, res2;
-        con = connected();
-        if(!con) {
-            puts("No No");
-            continue;
+        if(k<=n)
+        {
+            ans+=c[n][k];
+            ans%=p;
         }
-        res1 = dir();
-        res2 = undir();
-        printf("%s %s\n", res1 ? "Yes" : "No", res2 ? "Yes" : "No");
+        printf("%d\n",ans);
     }
     return 0;
 }
