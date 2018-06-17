@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 /cygdrive/d/hbat_code/cpp/helloj/main.cpp
-bits/stdc++.h
+cstdio
+-
+cstring
 -
 
