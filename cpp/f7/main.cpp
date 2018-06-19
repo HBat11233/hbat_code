@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -16,7 +17,7 @@ int bfs(int b)
     int last;
     queue<int>que;
     que.push(b);
-    while(que.size()!=0)
+    while(!que.empty())
     {
         last=que.front();
         int h=frista[last];
@@ -28,10 +29,13 @@ int bfs(int b)
         len++;
         que.pop();
     }
+    return last;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+    QCoreApplication a(argc, argv);
+
     int t;
     scanf("%d",&t);
     while(t--)
@@ -50,4 +54,5 @@ int main()
         printf("%d\n",len);
     }
     return 0;
+    return a.exec();
 }

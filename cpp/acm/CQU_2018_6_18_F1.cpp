@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-#define INF 100005
+#define INF 100005*2
 #define MEM(a,b) memset(a,b,sizeof(a))
 
 int x[INF];
@@ -9,25 +9,36 @@ int y[INF];
 int nexts[INF];
 int frista[INF];
 int len;
+bool pk[INF];
 
 int bfs(int b)
 {
     len=0;
+    MEM(pk,0);
     int last;
     queue<int>que;
     que.push(b);
-    while(que.size()!=0)
+    pk[b]=true;
+    int k=0;
+    while(!que.empty())
     {
         last=que.front();
+        if(k==0)k=que.size();
         int h=frista[last];
         while(h!=-1)
         {
-            que.push(y[h]);
+            if(!pk[y[h]])
+            {
+                pk[y[h]]=true;
+                que.push(y[h]);
+            }
             h=nexts[h];
         }
-        len++;
+        k--;
         que.pop();
+        if(k==0)len++;
     }
+    return last;
 }
 
 int main()
@@ -40,14 +51,19 @@ int main()
         scanf("%d",&n);
         MEM(frista,-1);
         MEM(nexts,-1);
-        for(int i=1;i<n;++i)
+        for(int i=1;i<2*n-1;++i)
         {
             scanf("%d%d",x+i,y+i);
             nexts[i]=frista[x[i]];
             frista[x[i]]=i;
+            x[i+1]=y[i];
+            y[i+1]=x[i];
+            ++i;
+            nexts[i]=frista[x[i]];
+            frista[x[i]]=i;
         }
         bfs(bfs(1));
-        printf("%d\n",len);
+        printf("%d\n",len-1);
     }
     return 0;
 }
