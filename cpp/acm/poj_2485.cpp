@@ -1,3 +1,4 @@
+//最小生成树
 #include <iostream>
 #include <cstdio>
 

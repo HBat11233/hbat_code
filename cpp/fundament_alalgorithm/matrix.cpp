@@ -78,7 +78,7 @@ matrix pow(matrix a,int b)
 
 int n,k;
 
-int mian()
+int main()
 {
     n=read();
     k=read();

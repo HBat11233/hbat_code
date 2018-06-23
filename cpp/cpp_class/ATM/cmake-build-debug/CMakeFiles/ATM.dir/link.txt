@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/ATM.dir/main.cpp.o CMakeFiles/ATM.dir/Account.cpp.o CMakeFiles/ATM.dir/Savings.cpp.o CMakeFiles/ATM.dir/Credit.cpp.o CMakeFiles/ATM.dir/Bank.cpp.o CMakeFiles/ATM.dir/ATM.cpp.o  -o ATM.exe -Wl,--out-implib,libATM.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

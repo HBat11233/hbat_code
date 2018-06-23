@@ -1,3 +1,4 @@
+//状态压缩
 #include <iostream>
 #include <cstring>
 #include <cstdio>

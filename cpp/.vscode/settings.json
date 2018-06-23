@@ -67,6 +67,9 @@
         "typeinfo": "cpp",
         "fstream": "cpp",
         "ratio": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "algorithm": "cpp"
     }
 }

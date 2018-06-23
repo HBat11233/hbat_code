@@ -3,36 +3,87 @@
 
 using namespace std;
 
-map<int,long long>pos;
-map<long long,int>ans;
-
-int g(const long long & m)
+struct matrix
 {
-    if(ans.count(m))return ans[m];
-    if(m==1)return ans[m]=1;
-    if(m==2)return ans[m]=2;
-    return ans[m]=(g(m-1)+g(m-2)+(((m-1)%MOD)*((m-1)%MOD))%MOD)%MOD;
+    int n;
+    int m;
+    long long s[6][6];
+    matrix()
+    {
+        n=0;
+        m=0;
+        for(int i=0;i<6;++i)
+            for(int j=0;j<6;++j)
+                s[i][j]=0;
+    }
+};
+
+matrix operator * (const matrix & a,const matrix & b)
+{
+    matrix c;
+    if(a.m!=b.n)return c;
+    c.n=a.n;
+    c.m=b.m;
+    for(int i=0;i<c.n;++i)
+        for(int j=0;j<c.m;++j)
+        {
+            for(int k=0;k<a.m;++k)
+            {
+                c.s[i][j]+=((a.s[i][k]%MOD)*(b.s[k][j]%MOD))%MOD;
+                c.s[i][j]%=MOD;
+            }
+        }
+    return c;
+}
+
+matrix qpow(matrix a,int n)
+{
+    matrix ans=a;
+    matrix temp=a;
+    int p=n-1;
+    while(p)
+    {
+        if(p&1)ans=ans*temp;
+        temp=temp*temp;
+        p>>=1;
+    }
+    return ans;
 }
 
 int main()
 {
-    int t;
-    freopen("10.txt","w",stdout);
-    long long m=0;
-    scanf("%d",&t);
-    while(t--)
+    matrix f0;
+    f0.n=5;
+    f0.m=1;
+    int sa[5][1]={{2},{1},{4},{4},{1}};
+    for(int i=0;i<5;i++)
+        for(int j=0;j<5;++j)
+            f0.s[i][j]=sa[i][j];
+    matrix a;
+    a.n=a.m=5;
+    int sb[5][5]=
     {
-        m++;
-        //scanf("%d",&m);
-        if(pos.count(g(m)))
+        {1,1,1,0,0},
+        {1,0,0,0,0},
+        {0,0,1,1,1},
+        {0,0,0,1,2},
+        {0,0,0,0,1},
+    };
+    for(int i=0;i<5;++i)
+        for(int j=0;j<5;++j)
+            a.s[i][j]=sb[i][j];
+    int n,m;
+    cin>>n;
+    while(n--)
+    {
+        cin>>m;
+        if(m<=2)cout<<f0.s[2-m][0]<<'\n';
+        else
         {
-            cout<<endl;
-            cout<<pos[g(m)]<<endl<<m<<endl<<g(m)<<endl;
-            //system("pause");
-        }
-        pos[g(m)]=m;
-        //printf("%d\n",g(m));
-
+            matrix an=qpow(a,m-2);
+            matrix fn=an*f0;
+            cout<<fn.s[0][0]<<'\n';
+       }
     }
     return 0;
 }

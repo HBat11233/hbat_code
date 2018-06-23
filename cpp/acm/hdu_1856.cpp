@@ -1,3 +1,4 @@
+//并查集
 #include <algorithm>
 #include <iostream>
 #include <cstdio>
