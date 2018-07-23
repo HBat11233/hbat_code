@@ -1,68 +1,68 @@
-#include<bits/stdc++.h>
+//树状数组
+#include <bits/stdc++.h>
+
 using namespace std;
 
-typedef long long ll;
-
-struct BIT
+typedef struct Binary_Indexed_Tree
 {
-	static const int N = 1e5 + 5;
-	int a[N];
-	int n;
-	void init(int _n)
+	int arr[100005];
+	int len;
+	void init()
 	{
-		n = _n;
-		memset(a, 0, sizeof a);
+		memset(arr,0,sizeof(arr));
 	}
-	void add(int i, int x)
+	void add(int i,int x)
 	{
-		for (; i <= n; i += i & -i) a[i] += x;
+		for(;i<=len;i+=(i&-i))
+			arr[i]+=x;
 	}
-	int getSum(int i)
+	int put(int i)
 	{
-		int ret = 0;
-		for (; i > 0; i -= i & -i) 
-            ret += a[i];
-		return ret;
+		int ans=0;
+		for(;i>0;i-=(i&-i))
+			ans+=arr[i];
+		return ans;
 	}
-}bit;
+}BIT;
 
 int main()
 {
-	int T; 
-    scanf("%d", &T);
-	while (T--)
+	BIT a;
+	int t;
+	scanf("%d",&t);
+	while(t--)
 	{
-		int n; 
-        scanf("%d", &n);
-		char s[10];
-		int q;
-		scanf("%s%s%d", s, s, &q);
-		bit.init(n);
-		while (q--)
+		scanf("%d",&a.len);
+		int n;
+		scanf("\nSweet 1\n%d",&n);
+		a.init();
+		for(int i=0;i<n;++i)
 		{
-			int op, a, b;
-			scanf("%d%d%d", &op, &a, &b);
-			if (op == 0) bit.add(a, b);
-			else printf("%d\n", bit.getSum(b) - bit.getSum(a - 1));
+			int s,b,c;
+			scanf("%d%d%d",&s,&b,&c);
+			if(s) printf("%d\n",a.put(c)-a.put(b-1));
+			else a.add(b,c);
 		}
-		scanf("%s%s%d", s, s, &q);
-		bit.init(n);
-		while (q--)
+		scanf("\nSweet 2\n%d",&n);
+		a.init();
+		for(int i=0;i<n;++i)
 		{
-			int op; scanf("%d", &op);
-			if (op == 0)
+			int s;
+			scanf("%d",&s);
+			if(s)
 			{
-				int a, b, c;
-				scanf("%d%d%d", &a, &b, &c);
-				bit.add(a, c);
-				bit.add(b + 1, -c);
-			}
-			else
+				int b;
+				scanf("%d",&b);
+				printf("%d\n",a.put(b));
+			}else
 			{
-				int a; scanf("%d", &a);
-				printf("%d\n", bit.getSum(a));
+				int b,c,d;
+				scanf("%d%d%d",&b,&c,&d);
+				a.add(b,d);
+				a.add(c+1,-d);
 			}
 		}
 	}
+
 	return 0;
 }
