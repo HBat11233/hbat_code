@@ -44,6 +44,7 @@ int js(int ipos,mts &app)
             n.size=k;
             for(int j=0;j<k;++j)
                 n.str[j]=temp[j];
+            n.str[k]='\n';
         }
         sum+=js(ipos+1,n);
     }
@@ -67,7 +68,7 @@ int main()
             al[ch-'a']++;
         }
         int k=0;
-        for(int i=0;i<'z'-'a';++i)
+        for(int i=0;i<='z'-'a';++i)//'z'-'a',减多了。。。。
         {
             if(al[i]%2!=0)k++;
             if(k>1)
@@ -76,12 +77,13 @@ int main()
                 break;
             }
         }
-        if(ans)
+        if(n==1)ans=1;
+        else if(ans)
         {
             mts tp;
-            for(int i=0;i<'z'-'a';++i)
+            for(int i=0;i<='z'-'a';++i)
             {
-                if(al[i]!=0)
+                if((al[i]/2)!=0)
                 {
                     tp.str[tp.size]=i+'a';
                     tp.size++;

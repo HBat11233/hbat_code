@@ -22,13 +22,13 @@ int main()
             mnum=mnum>arr[i]? mnum:arr[i];
         }
         vector <long long> que;
-        long long tb=1;
-        long long mi=0;
+        int tb=1;
+        int mi=0;
         while(tb<=mnum)
         {
             long long len=0;
             que.clear();
-            for(long long i=0;i<n;++i)
+            for(int i=0;i<n;++i)
             {
                 if(tb&arr[i])len++;
                 else if(len)
@@ -45,7 +45,7 @@ int main()
             tb<<=1;
             mi++;
         }
-        printf("%d\n",ans);
+        printf("%lld\n",ans);
     }
     return 0;
 }
