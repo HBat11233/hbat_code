@@ -73,6 +73,7 @@
         "algorithm": "cpp",
         "deque": "cpp",
         "chrono": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "list": "cpp"
     }
 }

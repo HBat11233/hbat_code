@@ -2,7 +2,7 @@
 
 using namespace std;
 
-map<int,map<int,int> >book;
+map<int,map<int,long long> >book;
 
 long long fun(int k,int x)
 {
@@ -16,6 +16,9 @@ long long fun(int k,int x)
 
 int main()
 {
+#ifdef DEBUG
+    freopen("out.txt","w",stdout);
+#endif // DEBUG
     int t;
     book[0][1]=1;
     scanf("%d",&t);
