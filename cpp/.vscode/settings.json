@@ -74,6 +74,27 @@
         "deque": "cpp",
         "chrono": "cpp",
         "bitset": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "atomic": "cpp",
+        "cfenv": "cpp",
+        "cinttypes": "cpp",
+        "codecvt": "cpp",
+        "complex": "cpp",
+        "condition_variable": "cpp",
+        "csetjmp": "cpp",
+        "csignal": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "cuchar": "cpp",
+        "forward_list": "cpp",
+        "functional": "cpp",
+        "future": "cpp",
+        "memory": "cpp",
+        "mutex": "cpp",
+        "numeric": "cpp",
+        "scoped_allocator": "cpp",
+        "shared_mutex": "cpp",
+        "thread": "cpp",
+        "typeindex": "cpp"
     }
 }
