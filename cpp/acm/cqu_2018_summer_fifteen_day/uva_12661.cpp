@@ -59,6 +59,7 @@ int main()
         for(int i=0;i<m;++i)
         {
             scanf("%d%d%d%d%d",&a,&b,&c,&d,&e);
+            if(c<e)continue;
             da[a].push_back(ips(b,c,d,e));
         }
         spfa(s);
