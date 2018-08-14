@@ -37,7 +37,7 @@ char s[110005];
 
 int main()
 {
-	freopen("in.txt","r",stdin);
+	//freopen("in.txt","r",stdin);
     string str;
     while(gets(s))
     {
