@@ -1,49 +1,46 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <cstring>
 
 using namespace std;
 
-int Manacher(string str)
+int dp[20];
+
+int dfs(int pos,int pre,bool limit,int *a/*每一位上限*/)
 {
-    string cal;
-    for(int i=0;i<str.size();++i)
+    if(pos==-1)return 1;
+    int cnt=0;
+    if( !limit && pre!=6 && dp[pos]!=-1)return dp[pos];
+    int up= limit? a[pos]:9;
+    for(int i=0;i<=up;++i)
     {
-        cal.push_back('#');
-        cal.push_back(str[i]);
+        if(i==4)continue;
+        if(pre==6&&i==2)continue;
+        cnt+=dfs(pos-1,i,limit && i==a[pos],a);
     }
-    cal.push_back('#');
-    int mx,id;
-    vector<int>arr(cal.size(),0);
-    arr[0]=1;
-    arr[1]=2;
-    mx=2;
-    id=1;
-    for(int i=2;i<cal.size();++i)
-    {
-        arr[i]= mx>i? min(arr[id*2-i],mx-i):1;
-        while(i+arr[i]<cal.size()&&i-arr[i]>=0&&cal[i+arr[i]]==cal[i-arr[i]])arr[i]++;
-        if(arr[i]+i-1>mx)
-        {
-            mx=arr[i]+i-1;
-            id=i;
-        }
-    }
-    int pos=0;
-    for(int i=0;i<cal.size();++i)
-        pos= arr[pos]>arr[i]? pos:i;
-    return arr[pos]-1;
+    if(!limit && pre!=6  )dp[pos]=cnt;
+    return cnt;
 }
 
-char s[110005];
+inline int sov(int x)
+{
+    memset(dp,-1,sizeof(dp));
+    int a[20];
+    memset(a,0,sizeof(a));
+    int pos=0;
+    while(x)
+    {
+        a[pos++]=x%10;
+        x/=10;
+    }
+    return dfs(pos,true,true,a);
+}
 
 int main()
 {
-	freopen("in.txt","r",stdin);
-    string str;
-    while(gets(s))
+    int n,m;
+    while(scanf("%d%d",&n,&m),n+m)
     {
-		//str=s;
-        cout<<Manacher(s)<<endl;
-		if(getchar()!='\n')break;
+        cout<<sov(m)-sov(n-1)<<endl;
     }
     return 0;
 }
