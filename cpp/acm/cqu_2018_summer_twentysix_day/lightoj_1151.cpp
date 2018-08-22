@@ -4,8 +4,7 @@
 
 using namespace std;
 
-double dp[104];
-int book[105][105];
+int book[105];
 
 int main()
 {
@@ -24,13 +23,7 @@ int main()
             cin>>a>>b;
             book[a]=b;
         }
-        for(int i=99;i>0;--i)
-        {
-            for(int j=1;j<6;++j)
-            {
-                
-            }
-        }
+
     }
     return 0;
 }
