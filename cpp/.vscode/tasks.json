@@ -3,7 +3,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "Compile", // 任务名称，与launch.json的preLaunchTask相对应
+            "label": "Compile", // 任务名称，与launch.json的preLaunchTask相对应
             "command": "clang++", // 如果用MinGW，编译C用gcc，编译c++用g++     command
             "args": [
                 "${file}",

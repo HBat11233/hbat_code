@@ -1,9 +1,9 @@
 {
     "files.defaultLanguage": "cpp", // ctrl+N新建文件后默认的语言
-    "c-cpp-flylint.cppcheck.enable": false,
-    "c-cpp-flylint.flexelint.enable": false,
-    "c-cpp-flylint.run": "onType", // 此选项貌似不起作用
-    "c-cpp-flylint.clang.includePaths": [
+//    "c-cpp-flylint.cppcheck.enable": false,
+//    "c-cpp-flylint.flexelint.enable": false,
+//    "c-cpp-flylint.run": "onType", // 此选项貌似不起作用
+    "C_Cpp.default.includePath": [
         "${workspaceRoot}",
         "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include/c++",
         "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include/c++/x86_64-w64-mingw32",
@@ -13,15 +13,26 @@
         "C:/Program Files/LLVM/x86_64-w64-mingw32/include",
         "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include-fixed"
     ],
-    "c-cpp-flylint.clang.defines": [
-        "_DEBUG",
-        "UNICODE",
-        "__GNUC__=7",
-        "__cdecl=__attribute__((__cdecl__))"
+//    "c-cpp-flylint.clang.defines": [
+//        "_DEBUG",
+//        "UNICODE",
+//        "__GNUC__=7",
+//        "__cdecl=__attribute__((__cdecl__))"
+//    ],
+//    "c-cpp-flylint.standard": [ // 此选项貌似也不起作用
+//        "c11",
+//        "c++1z"
+//    ],
+    "clang.cflags": [ // 控制c语言静态检测的参数
+        "--target=x86_64-w64-mingw",
+        "-std=c11",
+        "-Wall"
     ],
-    "c-cpp-flylint.standard": [ // 此选项貌似也不起作用
-        "c11",
-        "c++1z"
+    "clang.cxxflags": [//控制c++语言是静态检测参数
+        "--target=x86_64-w64-mingw",
+        "-std=c++11",
+        "-std=c++1z",
+        "-Wall"
     ],
     "code-runner.runInTerminal": true, // 设置成false会在“输出”中输出，无法交互
     "code-runner.executorMap": {
