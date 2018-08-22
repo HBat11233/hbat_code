@@ -10,9 +10,6 @@
 
 using namespace std;
 
-<<<<<<< HEAD
-int book[105];
-=======
 double matix[INF][INF];
 int book[105];
 
@@ -36,7 +33,6 @@ void gauss()
         for(int j=i-1;j>0;--j)
             matix[j][101]-=matix[i][101]*matix[j][i];
 }
->>>>>>> 073f2c53519f0bea5d58b889693ed30baa89aab1
 
 int main()
 {
@@ -56,9 +52,6 @@ int main()
             cin>>a>>b;
             book[a]=b;
         }
-<<<<<<< HEAD
-
-=======
         matix[100][100]=1;
         matix[100][101]=0;
         for(int i=1;i<100;++i)
@@ -84,7 +77,6 @@ int main()
         }
         gauss();
         cout<<"Case "<<o<<": "<<setprecision(8)<<fixed<<matix[1][101]<<endl;
->>>>>>> 073f2c53519f0bea5d58b889693ed30baa89aab1
     }
     return 0;
 }
