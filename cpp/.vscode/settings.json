@@ -108,5 +108,6 @@
         "thread": "cpp",
         "typeindex": "cpp",
         "queue": "cpp"
-    }
+    },
+    "clang.completion.enable": false // 效果稍好，但太卡，故关掉
 }
