@@ -1,39 +1,33 @@
-def sele_sort(l):#选择排序
-    ip=0
-    for i in range(0,len(l)):
-        a=0x7fffffff
-        for j in range(i,len(l)):
-            if(l[j]<a):
-                a=l[j]
-                ip=j
-        temp=l[i]
-        l[i]=l[ip]
-        l[ip]=temp
+import requests
+from bs4 import BeautifulSoup
+import bs4
 
-def find(x,l,b,e):#二分查找
-    if(b==e):
-        if(x==l[b]):
-            return b
-        else:
-            return -1
-    mid=int((b+e)/2)
-    if(x<=l[mid]):
-        return find(x,l,b,mid)
-    else:
-        return find(x,l,mid+1,e)
+def findurl(urls):
+    try:
+        r = requests.get(urls,timeout = 5)
+        r.raise_for_status();
+        r.encoding = r.apparent_encoding
+        return r.text
+    except:
+        return ""
 
-l=[]
-print("输入列表长度：")
-n=int(input())
-print("输入列表内容：")
-for i in range(0,n):
-    a=int(input())
-    l.append(a)
-print(l)
-sele_sort(l)
-print("排序后：")
-print(l)
-while(True):
-    print("输入查找数：")
-    x=int(input())
-    print(find(x,l,0,len(l)-1))
+def fillunivlist(ulist,demo):
+    soup = BeautifulSoup(demo,"html.parser")
+    for tr in soup.tbody.children:
+        if isinstance(tr,bs4.element.Tag):
+            tds = tr('td')
+            ulist.append([tds[0].string,tds[1].string,tds[3].string])
+
+def printful(ulist,num):
+    print("{0:^10}\t{1:{3}^10}\t{2:^10}".format("排名","学校","总分",chr(12288)))
+    for i in range(num):
+        u = ulist[i]
+        print("{0:^10}\t{1:{3}^10}\t{2:^10}\t".format(u[0],u[1],u[2],chr(12288)))
+
+if __name__ == "__main__":
+    ulist = []
+    url = "http://www.zuihaodaxue.cn/zuihaodaxuepaiming2018.html"
+    demo = findurl(url)
+    fillunivlist(ulist,demo)
+    printful(ulist,20)
+
